@@ -7,7 +7,7 @@ document.querySelector("form").addEventListener("submit", async function (event)
   let code = document.querySelector("textarea[name='code']").value;
   code += " dont change anything just fix syntax also tell what u changes u made";
 
-  const response = await fetch('http://localhost:5000/ask', {
+  const response = await fetch('/ask', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ code })
