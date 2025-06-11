@@ -5,7 +5,6 @@ document.querySelector("form").addEventListener("submit", async function (event)
   submitButton.disabled = true;
 
   let code = document.querySelector("textarea[name='code']").value;
-  code += " dont change anything just fix syntax also tell what u changes u made";
 
   const response = await fetch('/ask', {
     method: 'POST',
