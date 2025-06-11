@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
+const path = require('path');
 const { GoogleGenerativeAI } = require('@google/generative-ai');
 
 dotenv.config();
@@ -9,16 +10,19 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_KEY);
+// ✅ Serve static files (frontend)
+app.use(express.static(path.join(__dirname)));
 
 app.get('/', (req, res) => {
-  res.send('Server is running. Use POST /ask endpoint.');
+  res.sendFile(path.join(__dirname, 'index.html'));
 });
 
+// ✅ Your POST /ask route
 app.post('/ask', async (req, res) => {
   const { code } = req.body;
 
   try {
+    const genAI = new GoogleGenerativeAI(process.env.GEMINI_KEY);
     const model = genAI.getGenerativeModel({
       model: "gemini-2.0-flash"
     });
@@ -44,7 +48,9 @@ ${code}
   }
 });
 
+// ✅ Listen on proper port
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`✅ Server running on port ${PORT}`);
 });
+
