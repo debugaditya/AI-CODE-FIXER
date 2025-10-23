@@ -1,7 +1,7 @@
 document.querySelector("form").addEventListener("submit", async function (event) {
   event.preventDefault();
   const submitButton = document.querySelector("button[type='submit']");
-  submitButton.value="Loading..."
+  submitButton.innerText="Loading..."
   submitButton.disabled = true;
 
   let code = document.querySelector("textarea[name='code']").value;
@@ -113,4 +113,5 @@ document.querySelector("form").addEventListener("submit", async function (event)
   document.body.appendChild(resultsContainer);
   document.body.appendChild(buttonsContainer);
 });
+
 
