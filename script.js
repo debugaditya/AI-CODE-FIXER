@@ -1,11 +1,10 @@
 document.querySelector("form").addEventListener("submit", async function (event) {
   event.preventDefault();
-
   const submitButton = document.querySelector("button[type='submit']");
+  submitButton.value="Loading..."
   submitButton.disabled = true;
 
   let code = document.querySelector("textarea[name='code']").value;
-
   const response = await fetch('/ask', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -114,3 +113,4 @@ document.querySelector("form").addEventListener("submit", async function (event)
   document.body.appendChild(resultsContainer);
   document.body.appendChild(buttonsContainer);
 });
+
