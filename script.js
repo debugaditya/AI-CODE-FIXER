@@ -112,6 +112,8 @@ document.querySelector("form").addEventListener("submit", async function (event)
   // Append containers to body
   document.body.appendChild(resultsContainer);
   document.body.appendChild(buttonsContainer);
+  submitButton.innerText="Fix code"
 });
+
 
 
